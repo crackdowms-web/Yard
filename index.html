@@ -627,7 +627,8 @@
           <tr>
             <th class="col-body">Carross.</th>
             <th class="col-vin">VIN</th>
-            <th class="col-color">Coul.</th>
+            <th style="width:44px;text-align:center">Coul.</th>
+            <th style="width:70px;text-align:center">Adr.</th>
             <th class="col-status">Statut</th>
           </tr>
         </thead>
@@ -763,7 +764,10 @@
         <div class="v-body" id="i-body">—</div>
         <div class="v-meta">
           <div class="v-vin" id="i-vin">—</div>
-          <div class="v-color" id="i-color">—</div>
+          <div style="display:flex;gap:6px;margin-top:2px;">
+            <div class="v-color" id="i-color">—</div>
+            <div class="v-color" id="i-addr" style="display:none"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -826,6 +830,7 @@
           <div class="r-row"><span>Carrosserie</span><span id="r-body">—</span></div>
           <div class="r-row"><span>VIN</span><span id="r-vin">—</span></div>
           <div class="r-row"><span>Couleur</span><span id="r-color">—</span></div>
+          <div class="r-row" id="r-addr-row" style="display:none"><span>Adressage</span><span id="r-addr">—</span></div>
           <div class="r-row"><span>Résultat</span><span id="r-result">—</span></div>
           <div class="r-row"><span>Heure</span><span id="r-time">—</span></div>
         </div>
@@ -877,8 +882,39 @@
     { body:'27124', vin:'JTDKBCBB00A588544', color:'040' },
     { body:'27119', vin:'JTDKBCBB50A588541', color:'040' },
     { body:'27105', vin:'VNKKBCBB300A456327', color:'040' },
-    { body:'27111', vin:'JTDKGCGB20A172120', color:'089' },
-    { body:'27117', vin:'JTDKGCGB60A172122', color:'040' },
+    { body:'27141', vin:'JTDKBCBBX0A588549', color:'040', addr:'A01031' },
+    { body:'27148', vin:'JMZKBBC390A456333', color:'089', addr:'A01033' },
+    { body:'27129', vin:'JTDKBCBB20A588545', color:'040', addr:'A01035' },
+    { body:'27131', vin:'JMZKBBC350A456331', color:'040', addr:'A02028' },
+    { body:'27124', vin:'JTDKBCBB00A588544', color:'040', addr:'A03003' },
+    { body:'27119', vin:'JTDKBCBB50A588541', color:'040', addr:'A03003' },
+    { body:'27105', vin:'VNKKBBC300A456327', color:'040', addr:'A03004' },
+    { body:'27111', vin:'JTDKGCGB20A172120', color:'089', addr:'A03006' },
+    { body:'27117', vin:'JTDKGCGB60A172122', color:'040', addr:'A03022' },
+    { body:'26844', vin:'JTDKBCBBX0A588437', color:'040', addr:'A04038' },
+    { body:'27100', vin:'JTDKGCGB70A172114', color:'040', addr:'A04039' },
+    { body:'27096', vin:'VNKKBBC370A456325', color:'040', addr:'A05003' },
+    { body:'27093', vin:'JTDKBCBB80A588534', color:'040', addr:'A05004' },
+    { body:'27090', vin:'JTDKGCGB10A172111', color:'089', addr:'A05030' },
+    { body:'27087', vin:'JTDKGCGBX0A172110', color:'040', addr:'A05033' },
+    { body:'27086', vin:'JTDKBCBB20A588531', color:'040', addr:'A05035' },
+    { body:'26718', vin:'JTDKHCEB60A020793', color:'040', addr:'A05036' },
+    { body:'26856', vin:'JTDKGCGB30A172028', color:'089', addr:'A05036' },
+    { body:'27073', vin:'JTDKBCBB70A588525', color:'040', addr:'A05036' },
+    { body:'27063', vin:'JTDKBCBB10A588522', color:'040', addr:'A05037' },
+    { body:'26789', vin:'JMZKBBC320A456271', color:'089', addr:'A05038' },
+    { body:'27065', vin:'JTDKHCEB50A020803', color:'040', addr:'A05039' },
+    { body:'27062', vin:'VNKKBBC310A456319', color:'040', addr:'A06019' },
+    { body:'27056', vin:'JTDKGCGB40A172099', color:'089', addr:'A06019' },
+    { body:'26912', vin:'JTDKBCBB00A588463', color:'040', addr:'A06036' },
+    { body:'27051', vin:'JTDKBCBB80A588517', color:'040', addr:'A08014' },
+    { body:'27046', vin:'JTDKBCBB20A588514', color:'040', addr:'B03029' },
+    { body:'27038', vin:'JTDKGCGB50A172094', color:'089', addr:'B04016' },
+    { body:'26904', vin:'JTDKBCBB90A588459', color:'040', addr:'B05027' },
+    { body:'27040', vin:'JMZKBBC370A456315', color:'089', addr:'B05031' },
+    { body:'27032', vin:'JTDKBCBB70A588508', color:'040', addr:'B06010' },
+    { body:'27035', vin:'JTDKGCGB30A172093', color:'040', addr:'B06011' },
+    { body:'27024', vin:'JTDKBCBB30A588506', color:'040', addr:'B06012' },
   ];
 
   const results = {};
@@ -928,6 +964,7 @@
           <td class="td-body">${v.body}</td>
           <td class="td-vin">${v.vin}</td>
           <td class="td-color">${v.color}</td>
+          <td style="font-size:10px;font-family:monospace;text-align:center;color:var(--muted)">${v.addr||'—'}</td>
           <td style="text-align:right">${badgeFor(v)}</td>
         </tr>`).join('');
       tbody.querySelectorAll('tr').forEach(tr => {
@@ -949,6 +986,9 @@
     document.getElementById('i-body').textContent = v.body;
     document.getElementById('i-vin').textContent = v.vin;
     document.getElementById('i-color').textContent = v.color;
+    const addrEl = document.getElementById('i-addr');
+    if (v.addr) { addrEl.textContent = v.addr; addrEl.style.display='inline-block'; }
+    else { addrEl.style.display='none'; }
     document.getElementById('insp-comment').value = results[v.body] ? (results[v.body].comment || '') : '';
     updateDecisionUI();
     showScreen('screen-inspection');
@@ -1003,6 +1043,9 @@
     document.getElementById('r-body').textContent  = v.body;
     document.getElementById('r-vin').textContent   = v.vin;
     document.getElementById('r-color').textContent = v.color;
+    const rAddrRow = document.getElementById('r-addr-row');
+    if (v.addr) { document.getElementById('r-addr').textContent = v.addr; rAddrRow.style.display='flex'; }
+    else { rAddrRow.style.display='none'; }
     document.getElementById('r-result').textContent = labelMap[r.choice];
     document.getElementById('r-time').textContent  = heure;
     document.getElementById('rs-ok').textContent   = Object.values(results).filter(x => x.choice === 'ok').length;
@@ -1147,19 +1190,21 @@
     if (rows.length < 2) { status.style.color='var(--nok)'; status.textContent='Fichier vide ou invalide.'; return; }
     const header = rows[0].map(h => h.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''));
     const iBody  = header.findIndex(h => h.includes('carrosserie') || h.includes('body'));
-    const iVIN   = header.findIndex(h => h.includes('vin'));
+    const iVIN   = header.findIndex(h => h.includes('vin') || h.includes('vinno'));
     const iColor = header.findIndex(h => h.includes('couleur') || h.includes('color'));
+    const iAddr  = header.findIndex(h => h.includes('adressage') || h.includes('adresse') || h.includes('address'));
     if (iBody < 0 || iVIN < 0) {
       status.style.color='var(--nok)';
-      status.textContent = 'Colonnes "Carrosserie" et "VIN" non trouvées.';
+      status.textContent = 'Colonnes "Carrosserie" et "VIN/VINNO" non trouvées.';
       return;
     }
     const imported = [];
     rows.slice(1).forEach(r => {
-      const body = (r[iBody]||'').toString().trim();
-      const vin  = (r[iVIN]||'').toString().trim();
-      const color= iColor >= 0 ? (r[iColor]||'').toString().trim() : '—';
-      if (body && vin) imported.push({ body, vin, color });
+      const body  = (r[iBody]||'').toString().trim();
+      const vin   = (r[iVIN]||'').toString().trim();
+      const color = iColor >= 0 ? (r[iColor]||'').toString().trim() : '—';
+      const addr  = iAddr  >= 0 ? (r[iAddr]||'').toString().trim()  : '';
+      if (body && vin) imported.push({ body, vin, color, addr });
     });
     if (!imported.length) { status.style.color='var(--nok)'; status.textContent='Aucune ligne valide trouvée.'; return; }
     vehicles.length = 0;
@@ -1196,8 +1241,8 @@
       const r = results[v.body];
       const labelMap = { ok:'OK', nok:'NOK', rap:'Rapatriement' };
       const colorMap = { ok:'#166534', nok:'#991b1b', rap:'#92400e' };
-      if (!r) return `<tr><td>${v.body}</td><td style="font-size:10px">${v.vin}</td><td>${v.color}</td><td style="color:#64748b">À faire</td><td></td></tr>`;
-      return `<tr><td>${v.body}</td><td style="font-size:10px">${v.vin}</td><td>${v.color}</td><td style="color:${colorMap[r.choice]};font-weight:700">${labelMap[r.choice]}</td><td style="font-size:11px;color:#64748b">${r.comment||''}</td></tr>`;
+      if (!r) return `<tr><td>${v.body}</td><td style="font-size:10px">${v.vin}</td><td>${v.color}</td><td>${v.addr||'—'}</td><td style="color:#64748b">À faire</td><td></td></tr>`;
+      return `<tr><td>${v.body}</td><td style="font-size:10px">${v.vin}</td><td>${v.color}</td><td>${v.addr||'—'}</td><td style="color:${colorMap[r.choice]};font-weight:700">${labelMap[r.choice]}</td><td style="font-size:11px;color:#64748b">${r.comment||''}</td></tr>`;
     }).join('');
 
     const html = `<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8">
@@ -1224,7 +1269,7 @@
       <div class="stat s-nok"><span class="stat-num">${nok}</span><span class="stat-lbl">NOK</span></div>
       <div class="stat s-rap"><span class="stat-num">${rap}</span><span class="stat-lbl">Rapatr.</span></div>
     </div>
-    <table><thead><tr><th>Carrosserie</th><th>VIN</th><th>Couleur</th><th>Résultat</th><th>Commentaire</th></tr></thead>
+    <table><thead><tr><th>Carrosserie</th><th>VIN</th><th>Couleur</th><th>Adressage</th><th>Résultat</th><th>Commentaire</th></tr></thead>
     <tbody>${rows}</tbody></table>
     <div class="footer">Généré par YardCheck · ${dateStr} ${timeStr}</div>
     </body></html>`;
