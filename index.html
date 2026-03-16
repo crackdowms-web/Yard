@@ -627,8 +627,7 @@
           <tr>
             <th class="col-body">Carross.</th>
             <th class="col-vin">VIN</th>
-            <th style="width:44px;text-align:center">Coul.</th>
-            <th style="width:70px;text-align:center">Adr.</th>
+            <th class="col-color">Coul.</th>
             <th class="col-status">Statut</th>
           </tr>
         </thead>
@@ -646,66 +645,6 @@
         <span class="nav-label">Rapport</span>
       </button>
       <button class="nav-btn" id="nav-config-btn">
-        <svg viewBox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37a1.724 1.724 0 002.572-1.065z" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round"/></svg>
-        <span class="nav-label">Config</span>
-      </button>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════════════════
-       ÉCRAN CONFIG
-  ══════════════════════════════════════════ -->
-  <div class="screen" id="screen-config">
-    <div class="app-header">
-      <div class="header-top">
-        <h1>CONFIG</h1>
-        <div class="header-meta"><div>YardCheck</div></div>
-      </div>
-    </div>
-    <div class="scroll-area">
-      <div style="padding:16px;display:flex;flex-direction:column;gap:12px;">
-        <div style="background:#f8fafc;border:1px solid var(--border);border-radius:12px;padding:16px;">
-          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--muted);margin-bottom:10px;">Importer la liste véhicules</div>
-          <div style="font-size:13px;color:var(--muted);margin-bottom:12px;line-height:1.5;">Fichier Excel (.xlsx) ou CSV avec colonnes : <strong>Carrosserie</strong>, <strong>VIN</strong>, <strong>Couleur</strong></div>
-          <label style="display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;background:var(--blue);border-radius:10px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-            Choisir un fichier
-            <input type="file" id="import-file" accept=".xlsx,.xls,.csv" style="display:none" />
-          </label>
-          <div id="import-status" style="margin-top:10px;font-size:12px;color:var(--muted);text-align:center;min-height:18px;"></div>
-        </div>
-        <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:12px;padding:14px;">
-          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:#1d4ed8;margin-bottom:8px;">Format CSV attendu</div>
-          <pre style="font-size:11px;color:#1e40af;font-family:monospace;line-height:1.6;">Carrosserie;VIN;Couleur
-27141;JTDKBCBBX0A588549;040
-27148;JMZKBCBB390A456333;089</pre>
-        </div>
-        <div style="background:#f8fafc;border:1px solid var(--border);border-radius:12px;padding:16px;">
-          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--muted);margin-bottom:10px;">Exporter le rapport PDF</div>
-          <div style="font-size:13px;color:var(--muted);margin-bottom:12px;line-height:1.5;" id="export-summary">Aucune inspection enregistrée.</div>
-          <button id="export-pdf-btn" style="width:100%;display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;background:#0f172a;border:none;border-radius:10px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Télécharger PDF
-          </button>
-        </div>
-        <div style="background:#f8fafc;border:1px solid var(--border);border-radius:12px;padding:16px;">
-          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--muted);margin-bottom:10px;">Session</div>
-          <button id="reset-btn" style="width:100%;padding:13px;background:#fee2e2;border:1px solid #fca5a5;border-radius:10px;color:#b91c1c;font-size:14px;font-weight:700;cursor:pointer;">
-            Réinitialiser toutes les inspections
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="bottom-nav">
-      <button class="nav-btn" id="cfg-nav-list">
-        <svg viewBox="0 0 24 24"><path d="M4 6h16M4 10h16M4 14h16M4 18h16" stroke-linecap="round"/></svg>
-        <span class="nav-label">Liste</span>
-      </button>
-      <button class="nav-btn" id="cfg-nav-rapport">
-        <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="nav-label">Rapport</span>
-      </button>
-      <button class="nav-btn active">
         <svg viewBox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37a1.724 1.724 0 002.572-1.065z" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round"/></svg>
         <span class="nav-label">Config</span>
       </button>
@@ -764,10 +703,7 @@
         <div class="v-body" id="i-body">—</div>
         <div class="v-meta">
           <div class="v-vin" id="i-vin">—</div>
-          <div style="display:flex;gap:6px;margin-top:2px;">
-            <div class="v-color" id="i-color">—</div>
-            <div class="v-color" id="i-addr" style="display:none"></div>
-          </div>
+          <div class="v-color" id="i-color">—</div>
         </div>
       </div>
     </div>
@@ -830,7 +766,6 @@
           <div class="r-row"><span>Carrosserie</span><span id="r-body">—</span></div>
           <div class="r-row"><span>VIN</span><span id="r-vin">—</span></div>
           <div class="r-row"><span>Couleur</span><span id="r-color">—</span></div>
-          <div class="r-row" id="r-addr-row" style="display:none"><span>Adressage</span><span id="r-addr">—</span></div>
           <div class="r-row"><span>Résultat</span><span id="r-result">—</span></div>
           <div class="r-row"><span>Heure</span><span id="r-time">—</span></div>
         </div>
@@ -862,16 +797,6 @@
 </div>
 
 <script src="https://unpkg.com/@zxing/library@0.19.1/umd/index.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-<script>
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./sw.js').then(reg => {
-        console.log('YardCheck SW enregistré', reg.scope);
-      }).catch(err => console.warn('SW échec', err));
-    });
-  }
-</script>
 <script>
   /* ─── DATA ─── */
   const vehicles = [
@@ -882,39 +807,8 @@
     { body:'27124', vin:'JTDKBCBB00A588544', color:'040' },
     { body:'27119', vin:'JTDKBCBB50A588541', color:'040' },
     { body:'27105', vin:'VNKKBCBB300A456327', color:'040' },
-    { body:'27141', vin:'JTDKBCBBX0A588549', color:'040', addr:'A01031' },
-    { body:'27148', vin:'JMZKBBC390A456333', color:'089', addr:'A01033' },
-    { body:'27129', vin:'JTDKBCBB20A588545', color:'040', addr:'A01035' },
-    { body:'27131', vin:'JMZKBBC350A456331', color:'040', addr:'A02028' },
-    { body:'27124', vin:'JTDKBCBB00A588544', color:'040', addr:'A03003' },
-    { body:'27119', vin:'JTDKBCBB50A588541', color:'040', addr:'A03003' },
-    { body:'27105', vin:'VNKKBBC300A456327', color:'040', addr:'A03004' },
-    { body:'27111', vin:'JTDKGCGB20A172120', color:'089', addr:'A03006' },
-    { body:'27117', vin:'JTDKGCGB60A172122', color:'040', addr:'A03022' },
-    { body:'26844', vin:'JTDKBCBBX0A588437', color:'040', addr:'A04038' },
-    { body:'27100', vin:'JTDKGCGB70A172114', color:'040', addr:'A04039' },
-    { body:'27096', vin:'VNKKBBC370A456325', color:'040', addr:'A05003' },
-    { body:'27093', vin:'JTDKBCBB80A588534', color:'040', addr:'A05004' },
-    { body:'27090', vin:'JTDKGCGB10A172111', color:'089', addr:'A05030' },
-    { body:'27087', vin:'JTDKGCGBX0A172110', color:'040', addr:'A05033' },
-    { body:'27086', vin:'JTDKBCBB20A588531', color:'040', addr:'A05035' },
-    { body:'26718', vin:'JTDKHCEB60A020793', color:'040', addr:'A05036' },
-    { body:'26856', vin:'JTDKGCGB30A172028', color:'089', addr:'A05036' },
-    { body:'27073', vin:'JTDKBCBB70A588525', color:'040', addr:'A05036' },
-    { body:'27063', vin:'JTDKBCBB10A588522', color:'040', addr:'A05037' },
-    { body:'26789', vin:'JMZKBBC320A456271', color:'089', addr:'A05038' },
-    { body:'27065', vin:'JTDKHCEB50A020803', color:'040', addr:'A05039' },
-    { body:'27062', vin:'VNKKBBC310A456319', color:'040', addr:'A06019' },
-    { body:'27056', vin:'JTDKGCGB40A172099', color:'089', addr:'A06019' },
-    { body:'26912', vin:'JTDKBCBB00A588463', color:'040', addr:'A06036' },
-    { body:'27051', vin:'JTDKBCBB80A588517', color:'040', addr:'A08014' },
-    { body:'27046', vin:'JTDKBCBB20A588514', color:'040', addr:'B03029' },
-    { body:'27038', vin:'JTDKGCGB50A172094', color:'089', addr:'B04016' },
-    { body:'26904', vin:'JTDKBCBB90A588459', color:'040', addr:'B05027' },
-    { body:'27040', vin:'JMZKBBC370A456315', color:'089', addr:'B05031' },
-    { body:'27032', vin:'JTDKBCBB70A588508', color:'040', addr:'B06010' },
-    { body:'27035', vin:'JTDKGCGB30A172093', color:'040', addr:'B06011' },
-    { body:'27024', vin:'JTDKBCBB30A588506', color:'040', addr:'B06012' },
+    { body:'27111', vin:'JTDKGCGB20A172120', color:'089' },
+    { body:'27117', vin:'JTDKGCGB60A172122', color:'040' },
   ];
 
   const results = {};
@@ -964,7 +858,6 @@
           <td class="td-body">${v.body}</td>
           <td class="td-vin">${v.vin}</td>
           <td class="td-color">${v.color}</td>
-          <td style="font-size:10px;font-family:monospace;text-align:center;color:var(--muted)">${v.addr||'—'}</td>
           <td style="text-align:right">${badgeFor(v)}</td>
         </tr>`).join('');
       tbody.querySelectorAll('tr').forEach(tr => {
@@ -986,9 +879,6 @@
     document.getElementById('i-body').textContent = v.body;
     document.getElementById('i-vin').textContent = v.vin;
     document.getElementById('i-color').textContent = v.color;
-    const addrEl = document.getElementById('i-addr');
-    if (v.addr) { addrEl.textContent = v.addr; addrEl.style.display='inline-block'; }
-    else { addrEl.style.display='none'; }
     document.getElementById('insp-comment').value = results[v.body] ? (results[v.body].comment || '') : '';
     updateDecisionUI();
     showScreen('screen-inspection');
@@ -1043,9 +933,6 @@
     document.getElementById('r-body').textContent  = v.body;
     document.getElementById('r-vin').textContent   = v.vin;
     document.getElementById('r-color').textContent = v.color;
-    const rAddrRow = document.getElementById('r-addr-row');
-    if (v.addr) { document.getElementById('r-addr').textContent = v.addr; rAddrRow.style.display='flex'; }
-    else { rAddrRow.style.display='none'; }
     document.getElementById('r-result').textContent = labelMap[r.choice];
     document.getElementById('r-time').textContent  = heure;
     document.getElementById('rs-ok').textContent   = Object.values(results).filter(x => x.choice === 'ok').length;
@@ -1127,162 +1014,7 @@
     if (currentV && results[currentV.body]) showRapport();
     else showToast('Aucune inspection en cours');
   });
-  document.getElementById('nav-config-btn').addEventListener('click', () => { updateExportSummary(); showScreen('screen-config'); });
-  document.getElementById('cfg-nav-list').addEventListener('click',   () => showScreen('screen-list'));
-  document.getElementById('cfg-nav-rapport').addEventListener('click', () => {
-    if (currentV && results[currentV.body]) showRapport();
-    else showToast('Aucune inspection en cours');
-  });
   document.getElementById('search-input').addEventListener('input', e => renderList(e.target.value));
-
-  /* ─── RESET ─── */
-  document.getElementById('reset-btn').addEventListener('click', () => {
-    if (!confirm('Réinitialiser toutes les inspections ?')) return;
-    Object.keys(results).forEach(k => delete results[k]);
-    currentV = null; currentChoice = null;
-    renderList();
-    updateExportSummary();
-    showToast('Session réinitialisée');
-  });
-
-  /* ─── IMPORT CSV / EXCEL ─── */
-  document.getElementById('import-file').addEventListener('change', function() {
-    const file = this.files[0];
-    if (!file) return;
-    const status = document.getElementById('import-status');
-    status.style.color = 'var(--muted)';
-    status.textContent = 'Lecture en cours…';
-    const ext = file.name.split('.').pop().toLowerCase();
-    if (ext === 'csv') {
-      const reader = new FileReader();
-      reader.onload = e => parseCSV(e.target.result);
-      reader.readAsText(file, 'UTF-8');
-    } else if (ext === 'xlsx' || ext === 'xls') {
-      if (typeof XLSX === 'undefined') {
-        status.style.color = 'var(--nok)';
-        status.textContent = 'Bibliothèque Excel indisponible hors ligne. Utilisez le format CSV.';
-        return;
-      }
-      const reader = new FileReader();
-      reader.onload = e => {
-        try {
-          const wb = XLSX.read(new Uint8Array(e.target.result), { type:'array' });
-          const ws = wb.Sheets[wb.SheetNames[0]];
-          const rows = XLSX.utils.sheet_to_json(ws, { header:1 });
-          processRows(rows);
-        } catch(err) {
-          document.getElementById('import-status').style.color = 'var(--nok)';
-          document.getElementById('import-status').textContent = 'Erreur lecture Excel : ' + err.message;
-        }
-      };
-      reader.readAsArrayBuffer(file);
-    }
-  });
-
-  function parseCSV(text) {
-    const sep = text.includes(';') ? ';' : ',';
-    const rows = text.trim().split('\n').map(l => l.split(sep).map(c => c.trim().replace(/^"|"$/g,'')));
-    processRows(rows);
-  }
-
-  function processRows(rows) {
-    const status = document.getElementById('import-status');
-    if (rows.length < 2) { status.style.color='var(--nok)'; status.textContent='Fichier vide ou invalide.'; return; }
-    const header = rows[0].map(h => h.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''));
-    const iBody  = header.findIndex(h => h.includes('carrosserie') || h.includes('body'));
-    const iVIN   = header.findIndex(h => h.includes('vin') || h.includes('vinno'));
-    const iColor = header.findIndex(h => h.includes('couleur') || h.includes('color'));
-    const iAddr  = header.findIndex(h => h.includes('adressage') || h.includes('adresse') || h.includes('address'));
-    if (iBody < 0 || iVIN < 0) {
-      status.style.color='var(--nok)';
-      status.textContent = 'Colonnes "Carrosserie" et "VIN/VINNO" non trouvées.';
-      return;
-    }
-    const imported = [];
-    rows.slice(1).forEach(r => {
-      const body  = (r[iBody]||'').toString().trim();
-      const vin   = (r[iVIN]||'').toString().trim();
-      const color = iColor >= 0 ? (r[iColor]||'').toString().trim() : '—';
-      const addr  = iAddr  >= 0 ? (r[iAddr]||'').toString().trim()  : '';
-      if (body && vin) imported.push({ body, vin, color, addr });
-    });
-    if (!imported.length) { status.style.color='var(--nok)'; status.textContent='Aucune ligne valide trouvée.'; return; }
-    vehicles.length = 0;
-    imported.forEach(v => vehicles.push(v));
-    Object.keys(results).forEach(k => delete results[k]);
-    renderList();
-    status.style.color = 'var(--ok)';
-    status.textContent = imported.length + ' véhicule(s) importé(s) avec succès.';
-    showToast(imported.length + ' véhicules chargés');
-  }
-
-  /* ─── EXPORT PDF ─── */
-  function updateExportSummary() {
-    const done = Object.keys(results).length;
-    const el = document.getElementById('export-summary');
-    if (!done) { el.textContent = 'Aucune inspection enregistrée.'; return; }
-    const ok  = Object.values(results).filter(r => r.choice==='ok').length;
-    const nok = Object.values(results).filter(r => r.choice==='nok').length;
-    const rap = Object.values(results).filter(r => r.choice==='rap').length;
-    el.textContent = done + ' inspection(s) — OK : ' + ok + ' | NOK : ' + nok + ' | Rapatr. : ' + rap;
-  }
-
-  document.getElementById('export-pdf-btn').addEventListener('click', () => {
-    const done = Object.keys(results).length;
-    if (!done) { showToast('Aucune inspection à exporter'); return; }
-    const now = new Date();
-    const dateStr = fmt2(now.getDate())+'/'+fmt2(now.getMonth()+1)+'/'+now.getFullYear();
-    const timeStr = fmt2(now.getHours())+':'+fmt2(now.getMinutes());
-    const ok  = Object.values(results).filter(r => r.choice==='ok').length;
-    const nok = Object.values(results).filter(r => r.choice==='nok').length;
-    const rap = Object.values(results).filter(r => r.choice==='rap').length;
-
-    const rows = vehicles.map(v => {
-      const r = results[v.body];
-      const labelMap = { ok:'OK', nok:'NOK', rap:'Rapatriement' };
-      const colorMap = { ok:'#166534', nok:'#991b1b', rap:'#92400e' };
-      if (!r) return `<tr><td>${v.body}</td><td style="font-size:10px">${v.vin}</td><td>${v.color}</td><td>${v.addr||'—'}</td><td style="color:#64748b">À faire</td><td></td></tr>`;
-      return `<tr><td>${v.body}</td><td style="font-size:10px">${v.vin}</td><td>${v.color}</td><td>${v.addr||'—'}</td><td style="color:${colorMap[r.choice]};font-weight:700">${labelMap[r.choice]}</td><td style="font-size:11px;color:#64748b">${r.comment||''}</td></tr>`;
-    }).join('');
-
-    const html = `<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8">
-    <title>YardCheck — Rapport ${dateStr}</title>
-    <style>
-      body{font-family:Arial,sans-serif;margin:32px;color:#0f172a;font-size:13px}
-      h1{font-size:20px;margin-bottom:4px}
-      .meta{color:#64748b;font-size:12px;margin-bottom:24px}
-      .stats{display:flex;gap:16px;margin-bottom:24px}
-      .stat{padding:12px 20px;border-radius:8px;text-align:center;min-width:80px}
-      .s-ok{background:#dcfce7;color:#166534} .s-nok{background:#fee2e2;color:#991b1b} .s-rap{background:#fef3c7;color:#92400e} .s-tot{background:#f1f5f9;color:#0f172a}
-      .stat-num{font-size:22px;font-weight:700;display:block} .stat-lbl{font-size:10px;text-transform:uppercase;letter-spacing:0.5px}
-      table{width:100%;border-collapse:collapse;margin-top:8px}
-      th{background:#f8fafc;padding:8px 10px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:0.5px;color:#64748b;border-bottom:2px solid #e2e8f0}
-      td{padding:9px 10px;border-bottom:1px solid #f1f5f9;vertical-align:top}
-      tr:hover td{background:#f8fafc}
-      .footer{margin-top:32px;font-size:11px;color:#94a3b8;border-top:1px solid #e2e8f0;padding-top:12px}
-    </style></head><body>
-    <h1>YardCheck — Rapport d'inspection</h1>
-    <div class="meta">Réception TMMF &nbsp;·&nbsp; ${dateStr} à ${timeStr}</div>
-    <div class="stats">
-      <div class="stat s-tot"><span class="stat-num">${done}</span><span class="stat-lbl">Inspectés</span></div>
-      <div class="stat s-ok"><span class="stat-num">${ok}</span><span class="stat-lbl">OK</span></div>
-      <div class="stat s-nok"><span class="stat-num">${nok}</span><span class="stat-lbl">NOK</span></div>
-      <div class="stat s-rap"><span class="stat-num">${rap}</span><span class="stat-lbl">Rapatr.</span></div>
-    </div>
-    <table><thead><tr><th>Carrosserie</th><th>VIN</th><th>Couleur</th><th>Adressage</th><th>Résultat</th><th>Commentaire</th></tr></thead>
-    <tbody>${rows}</tbody></table>
-    <div class="footer">Généré par YardCheck · ${dateStr} ${timeStr}</div>
-    </body></html>`;
-
-    const blob = new Blob([html], { type:'text/html' });
-    const url  = URL.createObjectURL(blob);
-    const a    = document.createElement('a');
-    a.href = url;
-    a.download = 'yardcheck-rapport-' + now.getFullYear() + fmt2(now.getMonth()+1) + fmt2(now.getDate()) + '.html';
-    a.click();
-    URL.revokeObjectURL(url);
-    showToast('Rapport téléchargé');
-  });
 
   /* ─── INIT ─── */
   const d = new Date();
